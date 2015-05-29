@@ -1,3 +1,6 @@
+/***********************************************************************************
+for details,please see my blog:http://blog.csdn.net/jiyangsb/article/details/44523319
+**************************************************************************************/
 #include "LinkList.h"
 
 LinkList::LinkList(void)
