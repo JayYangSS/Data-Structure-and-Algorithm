@@ -15,6 +15,7 @@ public:
 	//Tree();
 	//~Tree();
 	Node* create(Node* head);
+	int getDepth(Node* head);
 	//DFS(depth first search)
 	void preOrder(Node* const head);
 	void inOrder(Node* const head);

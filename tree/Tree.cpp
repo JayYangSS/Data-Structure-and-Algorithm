@@ -49,6 +49,15 @@ void Tree::postOrder(Node* const head){
 	cout<<head->val<<endl;
 }
 
+int Tree::getDepth(Node* head){
+	if (head==NULL)return 0;
+	int lDepth=getDepth(head->lchild);
+	int rDepth=getDepth(head->rchild);
+	int max=lDepth>rDepth?lDepth:rDepth;
+	return max+1;
+}
+
+
 void Tree::BFS(Node* head){
 
 }
@@ -58,6 +67,10 @@ int main(int argc, char const *argv[])
 	Node *node;
 	Tree t;
 	node=t.create(node);
+
+	//get the depth of the tree
+	int depth=t.getDepth(node);
+	cout<<"the depth of tree:"<<depth<<endl;
 
 	//preOrder search
 	cout<<"preOrder:"<<endl;
