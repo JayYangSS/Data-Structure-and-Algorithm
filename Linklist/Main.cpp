@@ -17,15 +17,15 @@ int main()
 	//Test the function of SetupOrderedLinkList()
 	/*LinkList list;
 	Node *p1=list.SetupOrderedLinkList(false);//up order
-	list.diaplay(p1);
+	list.display(p1);
 
 	Node *p2=list.SetupOrderedLinkList(false);
-	list.diaplay(p2);
+	list.display(p2);
 
 	Node *merge=list.Merge2(p1,p2);
 
 	cout<<"合并后的链表："<<endl;
-	list.diaplay(merge);
+	list.display(merge);
 
 	Node* mid=new Node;
 	mid=list.FindMid(merge);
@@ -34,20 +34,20 @@ int main()
 	//Test the function of copyto()
 	/*LinkList list;
 	Node *p1=list.SetupOrderedLinkList(false);//up order
-	list.diaplay(p1);
+	list.display(p1);
 
 	Node *p2=new Node;
 	list.copyto(p1,p2);
-	list.diaplay(p2);*/
+	list.display(p2);*/
 
 	/*extern int a,b;//将该工程中其他文件中声明的全局变量（外部变量）的作用域扩展到该文件来
 	cout<<max(a,b)<<endl;*/
 
 	/*LinkList list;
 	Node* p=list.SetupLinkList();
-	list.diaplay(p);
+	list.display(p);
 	Node* q=list.SortLinkList(p);
-	list.diaplay(q);
+	list.display(q);
 	system("pause");*/
 
 
@@ -55,10 +55,10 @@ int main()
 	//test the SortLinkList()
 	LinkList list;
 	Node *p = list.SetupLinkList();
-	list.diaplay(p);
+	list.display(p);
 	Node *new_p=list.SortLinkList(p);
 	cout << "使用归并排序法得到的新链表为：" << endl;
-	list.diaplay(new_p);
+	list.display(new_p);
 	
 	system("pause");
 }

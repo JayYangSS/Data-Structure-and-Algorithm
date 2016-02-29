@@ -16,21 +16,22 @@ public:
 	LinkList(void);
 	~LinkList(void);
 	Node* SetupLinkList(void);
-	// //diaplay the data of link list
-	void diaplay(Node* head);
-	// ÊäÈëÊıÖµ£¬½¨Á¢ÓĞĞòµÄÁ´±í
+	// //display the data of link list
+	void display(Node* head);
+	//input the value and setup the ordered linklist
 	Node* SetupOrderedLinkList(bool down);
-	// ½«ÔªËØ²åÈëµ½ppËùÖ¸½Úµãºó
+
+	//insert the node after the node pp
 	void Insert(Node* pp,Node *newNode);
-	// ½«Á½¸öµ¥Á´±í°´Ë³ĞòºÏ²¢ÎªÒ»¸öµ¥Á´±í
+	// å°†ä¸¤ä¸ªå•é“¾è¡¨æŒ‰é¡ºåºåˆå¹¶ä¸ºä¸€ä¸ªå•é“¾è¡¨
 	Node* Merge(Node* first, Node* second);
-	// ½«Á´±í¸´ÖÆµ½ÁíÒ»ÌõÁ´±íÉÏ
+	// copy one link list to another one
 	void copyto(Node* src, Node* dst);
-	// ºÏ²¢Á½ÌõÓĞĞòÁ´±íµÄ·½·¨¶ş
+	// merge two ordered linklist(method 2)
 	Node* Merge2(Node* first, Node* second);
-	// Ñ°ÕÒµ¥Á´±íµÄÖĞ¼ä½Úµã
+	// find the middle of the linklist
 	Node* FindMid(Node* head);
-	// Ê¹ÓÃ¹é²¢ÅÅĞò·¨ÊµÏÖÁ´±íÅÅĞò
+	// ä½¿ç”¨å½’å¹¶æ’åºæ³•å®ç°é“¾è¡¨æ’åº
 	Node* SortLinkList(Node* head);
 };
 

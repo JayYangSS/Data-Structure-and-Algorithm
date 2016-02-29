@@ -52,8 +52,8 @@ Node* LinkList::SetupLinkList(void)
 
 
 
-// //diaplay the data of link list
-void LinkList::diaplay(Node* head)
+// //display the data of link list
+void LinkList::display(Node* head)
 {
 	Node *p;
 	if (head == NULL)
