@@ -8,7 +8,7 @@ int gcd(int a,int b){
 	int big=a>b?a:b;
 	int small=a>=b?b:a;
 	if(big%small==0)return small;
-	int result=gcd(big,big%small);
+	int result=gcd(small,big%small);
 	return result;
 }
 
