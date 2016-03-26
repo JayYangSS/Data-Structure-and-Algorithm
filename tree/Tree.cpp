@@ -2,6 +2,17 @@
 #include <queue>
 
 
+std::string to_string(int i)
+{
+    std::stringstream ss;
+    ss << i;
+    return ss.str();
+}
+
+Tree::Tree(){
+	p_str=NULL;
+}
+
 //judge is the two trees has the same root node and the same part
 bool hasTree(Node* p1,Node* p2){
 	if (p2==NULL)return true;
@@ -160,17 +171,67 @@ int testReConstructBinaryTree(){
 }
 
 
+Node* Tree::Deserialize(char *str) {
+        if(str==NULL)return NULL;
+        if(p_str==NULL)p_str=str;
+        if(*p_str=='$'){
+            p_str++;
+            return NULL;
+        }
+        
+        //get the value
+        int val=0;
+        while(*p_str!=',')
+        	val=val*10+(*(p_str++)-'0');
+
+        Node *node=new Node(val);
+        p_str++;
+        node->lchild=Deserialize(p_str);
+        p_str++;
+        node->rchild=Deserialize(p_str);
+        return node;
+    }
+
+
+char* Serialize(Node *root) {    
+        if(!root) return "$,";
+        string r = to_string(root->val);
+        r.push_back(',');
+        char *left = Serialize(root->lchild);
+        char *right = Serialize(root->rchild);
+        char *ret = new char[strlen(left) + strlen(right) + r.size()];
+        strcpy(ret, r.c_str());
+        strcat(ret, left);
+        strcat(ret, right);
+        return ret;
+    }
+
+void testDeserialize(){
+	char arrayS[]="1,11232,32,$,$,4,$,$,5,78,$,$,$";
+	char *array=arrayS;
+	Tree t;
+	Node *node=t.Deserialize(array);
+	
+	t.preOrder(node);
+}
+
 int main(int argc, char const *argv[])
 {
 	cout<<"test the reConstructBinaryTree:"<<endl;
 	testReConstructBinaryTree();
 
+	cout<<"test the Deserialize:"<<endl;
+	testDeserialize();
 
 	Node *node;
 	Tree t;
 
 	cout<<"create the binaryTree:"<<endl;
 	node=t.create(node);
+
+	cout<<"Serialize test:"<<endl;
+	char *re=Serialize(node);
+	cout<<re<<endl;
 
 	//get the depth of the tree
 	int depth=t.getDepth(node);

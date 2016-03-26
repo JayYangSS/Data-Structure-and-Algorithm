@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <string.h>
+#include <sstream>
 
 using namespace std;
 
@@ -14,8 +16,10 @@ class Tree
 {
 private:
 	Node* head;
+	char *p_str;//the pointer used in Deserialize method
+
 public:
-	//Tree();
+	Tree();
 	//~Tree();
 	Node* create(Node* head);
 	int getDepth(Node* head);
@@ -26,4 +30,5 @@ public:
 	//BFS(broad first search)
 	void BFS(Node* head);
 	Node* reConstructBinaryTree(vector<int> pre,vector<int> in);
+	Node* Deserialize(char *str);
 };
