@@ -1,5 +1,5 @@
-#include"Tree.h"
-#include<queue>
+#include "Tree.h"
+#include <queue>
 
 
 //judge is the two trees has the same root node and the same part
@@ -37,8 +37,8 @@ Node* Tree::create(Node* head){
 		head=NULL;
 		return NULL;
 	}
-	head=new Node;
-	head->val=input;
+	head=new Node(input);
+	//head->val=input;
 	cout<<"left child:"<<endl;
 	head->lchild=create(head->lchild);
 	cout<<"right child:"<<endl;
@@ -89,10 +89,87 @@ void Tree::BFS(Node* head){
 
 }
 
+Node* Tree::reConstructBinaryTree(vector<int> pre,vector<int> in){
+    if(pre.size()==0||in.size()==0)return NULL;
+	int rootVal=pre[0];
+	int preLen=pre.size();
+	int inLen=in.size();
+
+	Node *node=new Node(rootVal);
+	if(preLen==1)
+		return node;
+	
+	
+	vector<int> leftPreTree,rightPreTree;
+	vector<int> leftMidTree,rightMidTree;
+	int tmp=0;
+
+	//get the left mid tree and left pre tree
+	for(int i=0;i<preLen;i++){
+		if(rootVal==in[i]){
+			tmp=i;
+			break;
+		}
+		leftMidTree.push_back(in[i]);
+		leftPreTree.push_back(pre[i+1]);
+	}
+
+	//get the right mid tree and right pre tree
+	for(int i=tmp+1;i<preLen;i++){
+
+		rightMidTree.push_back(in[i]);
+		rightPreTree.push_back(pre[i]);
+	}
+	
+
+	Node *lt = reConstructBinaryTree(leftPreTree,leftMidTree);
+	Node *rt = reConstructBinaryTree(rightPreTree,rightMidTree);
+	node->lchild=lt;
+	node->rchild=rt;
+
+	return node;
+}
+
+
+int testReConstructBinaryTree(){
+	Tree t;
+	vector<int> pre,in;
+	pre.push_back(1);
+	pre.push_back(2);
+	pre.push_back(3);
+	pre.push_back(4);
+	pre.push_back(5);
+	pre.push_back(6);
+	pre.push_back(7);
+
+	in.push_back(3);
+	in.push_back(2);
+	in.push_back(4);
+	in.push_back(1);
+	in.push_back(6);
+	in.push_back(5);
+	in.push_back(7);
+
+	// in.push_back(2);
+	//in.push_back(1);
+	// in.push_back(3);
+
+
+	Node *p=t.reConstructBinaryTree(pre,in);
+	t.preOrder(p);
+}
+
+
 int main(int argc, char const *argv[])
 {
+	cout<<"test the reConstructBinaryTree:"<<endl;
+	testReConstructBinaryTree();
+
+
 	Node *node;
 	Tree t;
+
+	cout<<"create the binaryTree:"<<endl;
 	node=t.create(node);
 
 	//get the depth of the tree
@@ -121,3 +198,5 @@ int main(int argc, char const *argv[])
 		cout<<"the two trees don't have same part"<<endl;
 	return 0;
 }
+
+

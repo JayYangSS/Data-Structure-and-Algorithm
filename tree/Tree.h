@@ -1,10 +1,13 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
+
 using namespace std;
 
 struct Node{
 	int val;
 	Node* lchild;
 	Node* rchild;
+	Node(int x):val(x),lchild(NULL),rchild(NULL){}
 };
 
 class Tree
@@ -22,4 +25,5 @@ public:
 	void postOrder(Node* const head);
 	//BFS(broad first search)
 	void BFS(Node* head);
+	Node* reConstructBinaryTree(vector<int> pre,vector<int> in);
 };
