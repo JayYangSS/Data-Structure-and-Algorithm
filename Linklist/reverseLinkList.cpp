@@ -1,5 +1,6 @@
 #include "LinkList.h"
 
+//non recursive
 Node* reverse(Node* const head){
 	Node *p,*pre,*next;
 	p=head;
@@ -15,6 +16,21 @@ Node* reverse(Node* const head){
 
 	return pre;
 }
+
+
+//recursive version
+Node* ReverseList2(Node* pHead) {
+         
+         
+    if(pHead==NULL||pHead->next==NULL)return pHead;
+         
+         
+    Node* head=ReverseList2(pHead->next);
+    pHead->next->next=pHead;
+    pHead->next=NULL;
+    return head;
+}
+
 
 
 int main(int argc, char const *argv[])
