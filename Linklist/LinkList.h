@@ -33,5 +33,7 @@ public:
 	Node* FindMid(Node* head);
 	// 使用归并排序法实现链表排序
 	Node* SortLinkList(Node* head);
+
+	void QuickSort(Node* head,Node* tail);
 };
 

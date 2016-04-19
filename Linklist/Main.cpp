@@ -57,10 +57,16 @@ int main()
 	Node *p = list.SetupLinkList();
 	list.display(p);
 	Node *new_p=list.SortLinkList(p);
-	cout << "使用归并排序法得到的新链表为：" << endl;
+	cout << "SortLinkList:" << endl;
 	list.display(new_p);
+
+
+	cout<<"test quickSort:"<<endl;
+	Node *q = list.SetupLinkList();
+	list.QuickSort(q->next,NULL);
+	list.display(q);
 	
-	system("pause");
+	//system("pause");
 }
 
 //int a=15,b=-7;
