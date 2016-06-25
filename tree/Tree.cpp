@@ -1,6 +1,6 @@
 #include "Tree.h"
 #include <queue>
-
+#include <stack>
 
 std::string to_string(int i)
 {
@@ -86,6 +86,26 @@ void Tree::postOrder(Node* const head){
 		postOrder(head->rchild);
 	cout<<head->val<<endl;
 }
+
+void Tree::preOrderNonRecursive(Node* const head){
+	stack<Node*> S;
+	Node* p=head;
+	while(p!=NULL||!S.empty()){
+		//左子树处理
+		while(p!=NULL){
+			cout<<p->val<<endl;
+			S.push(p);
+			p=p->lchild;
+		}
+		//右子树处理
+		if(!S.empty()){
+			p=S.top();
+			S.pop();
+			p=p->rchild;
+		}
+	}
+}
+
 
 int Tree::getDepth(Node* head){
 	if (head==NULL)return 0;
@@ -240,6 +260,8 @@ int main(int argc, char const *argv[])
 	//preOrder search
 	cout<<"preOrder:"<<endl;
 	t.preOrder(node);
+	cout<<"preOrderNonRecursive："<<endl;
+	t.preOrderNonRecursive(node);
 
 	//inOrder search
 	cout<<"inOrder:"<<endl;
